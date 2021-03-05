@@ -10,7 +10,7 @@
             <input-field unique="retirementsalary" label="Expected Annual Income in Retirement" v-on:updated="form.retirementsalary = $event"></input-field>
             <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event"></input-field>
             <div class="input-wrapper">
-                <b-button block @click="emitData">Calculate</b-button>
+                <b-button block @click.prevent="emitData">Calculate</b-button>
             </div>
         </form>
         
@@ -28,7 +28,7 @@
 
 <script>
 import InputField from '../components/InputField.vue'
-import EventBus from '../eventBus'
+// import EventBus from '../eventBus'
 
 export default {
   components: {
@@ -75,18 +75,20 @@ watch: {
   },
   methods: {
     emitData () {
-      // const payload = {
-      //   // retirementyears: this.returnedData.retirementyears,
-      //   yearstilretire: this.returnedData.yearstilretire,
-      //   // moneymade: this.returnedData.moneymade,
-      //   // moneyatretirement: this.returnedData.moneyatretirement,
-      //   // retirementincome: this.returnedData.retirementincome,
-      //   // retirementsavings: this.returnedData.retirementwithsavings,
-      //   // incomelongevity: this.returnedData.incomelongevity
-      // }
+      const payload = {
+        retirementyears: this.returnedData.retirementyears,
+        yearstilretire: this.returnedData.yearstilretire,
+        moneymade: this.returnedData.moneymade,
+        moneyatretirement: this.returnedData.moneyatretirement,
+        retirementincome: this.returnedData.retirementincome,
+        retirementwithsavings: this.returnedData.retirementwithsavings,
+        incomelongevity: this.returnedData.incomelongevity,
+        retirementspending: this.returnedData.retirementspending
+      }
 
-      EventBus.$emit("returnData", this.returnedData.yearstilretire);
-      console.log('emit!');
+      // EventBus.$emit("returnData", this.returnedData.yearstilretire);
+      // console.log('emit!');
+      this.$store.commit('setState', payload);
       this.$router.push('/Results');
     }
   }

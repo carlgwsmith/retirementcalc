@@ -13,15 +13,6 @@
                 <b-button block @click.prevent="emitData">Calculate</b-button>
             </div>
         </form>
-        
-        retirement years: {{ returnedData.retirementyears }} <br/>
-        {{ returnedData.yearstilretire }} years til retirement <br/>
-        money made from now until retirement: {{returnedData.moneymade}}<br/>
-        money at retirement beginning: {{ returnedData.moneyatretirement}}<br/>
-        retirement income (for {{ returnedData.retirementyears}} years of {{form.retirementsalary}}): {{returnedData.retirementincome}} <br/>
-        retirement total with no spending: {{returnedData.retirementwithsavings}}<br/>
-        money spent during retirement: {{returnedData.retirementspending}}<br/>
-        your money will last: {{ returnedData.incomelongevity }}
 
   </div>
 </template>
@@ -67,7 +58,8 @@ watch: {
         this.returnedData.moneyatretirement = parseInt(this.returnedData.moneymade) + parseInt(newValue.totalsavings);
         this.returnedData.retirementincome = parseInt(newValue.retirementsalary) * parseInt(this.returnedData.retirementyears);
         this.returnedData.retirementwithsavings = parseInt(this.returnedData.moneyatretirement) + parseInt(newValue.retirementsalary);
-        this.returnedData.retirementspending= parseInt(this.returnedData.retirementwithsavings) - (parseInt(newValue.annualspending) * parseInt(this.returnedData.retirementyears));
+        //this.returnedData.retirementspending= parseInt(this.returnedData.retirementwithsavings) - (parseInt(newValue.annualspending) * parseInt(this.returnedData.retirementyears));
+        this.returnedData.retirementspending= parseInt(newValue.annualspending) * parseInt(this.returnedData.retirementyears);
         this.returnedData.incomelongevity = parseInt(this.returnedData.retirementwithsavings) / parseInt(newValue.annualspending); 
       },
       deep: true
@@ -76,6 +68,8 @@ watch: {
   methods: {
     emitData () {
       const payload = {
+        retireage: this.form.retireage,
+        lifespan: this.form.lifespan,
         retirementyears: this.returnedData.retirementyears,
         yearstilretire: this.returnedData.yearstilretire,
         moneymade: this.returnedData.moneymade,

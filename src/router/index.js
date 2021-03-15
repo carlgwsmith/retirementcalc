@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Results from '../views/Results.vue'
+import LongevityChart from '../components/charts/LongevityChart.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [
     path:'/Results',
     name: 'Results',
     component: Results
+  },
+  {
+    path:'/chart',
+    name: 'Chart',
+    component: LongevityChart
   }
 ]
 

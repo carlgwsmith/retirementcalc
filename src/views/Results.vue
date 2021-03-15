@@ -1,7 +1,7 @@
 <template>
 <div>
   <h1>Results Page</h1>
-retirement years: {{ retirementyears }} <br/>
+        retirement years: {{ retirementyears }} <br/>
         {{ yearstilretire }} years til retirement <br/>
         money made from now until retirement: {{moneymade}}<br/>
         money at retirement beginning: {{ moneyatretirement}}<br/>
@@ -9,14 +9,19 @@ retirement years: {{ retirementyears }} <br/>
         retirement total with no spending: {{retirementwithsavings}}<br/>
         money spent during retirement: {{retirementspending}}<br/>
         your money will last: {{ incomelongevity }}
+        <longevity-results></longevity-results>
 </div>
 </template>
 
 <script>
 // import EventBus from "../eventBus"
+import LongevityResults from '../components/LongevityResults.vue';
 
 export default {
   Name:'Results',
+  components: {
+  LongevityResults
+  },
 data: () => ({
     retirementyears: 0,
     yearstilretire:0,

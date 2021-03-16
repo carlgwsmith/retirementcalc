@@ -1,12 +1,13 @@
 <template>
   <div>
-     AGE: {{retireage}}
+     <!-- AGE: {{retireage}}
      life: {{lifespan}}
      spend: {{retirementspending}}
      saved: {{retirementwithsavings}}
      retirementincome: {{retirementincome}}
-     years: {{retirementyears}}
-      <longevity-chart :chart-data="getLongevityChartData"/>
+     retirementsalary: {{retirementsalary}}
+     years: {{retirementyears}} -->
+      <longevity-chart :chart-data="getLongevityChartData" :options="getSSBenefitsChartOptions" :width="500" :height="400" />
   </div>
 </template>
 
@@ -21,8 +22,42 @@ export default {
     retirementwithsavings:0,
     retirementincome: 0,
     retirementyears: 0,
-    ageArray: [],
-    retirementYearly: [],
+    retirementsalary: 0,
+    // ageArray: [],
+    //retirementYearly: [],
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltipenabled: false,
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            boxWidth: 8,
+            fontSize: 14
+          }
+        },
+        title: {
+          display: true,
+          text: "Retirement Portfolio Value Over Time with Spending ",
+          fontSize: "16",
+        },
+        pointLabels: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            id: 'default',
+            ticks: {
+              min: 0
+            }
+          }],
+          yAxes: {
+            
+          }
+        }
+      },
+    
 }),
     components: {
         LongevityChart
@@ -34,41 +69,47 @@ export default {
   getLongevityChartData: function () {
     let chartData = {};
     let datasets = [];
-    
-    var ageArray = [];
     var retireage = this.retireage;
     var deadage = this.lifespan;
-    for(var i= retireage; i <= deadage; i++){
-    ageArray.push([i]);
-    console.log(ageArray);
-    }
-    
-    
+    var rspend = this.retirementspending / this.retirementyears;
+    var yearlyspendingamount = 0;
+    var rsalary = this.retirementsalary * this.retirementyears;
+    var rsaving = this.retirementwithsavings + rsalary;
+    var ageArray = Array.apply(null, Array(this.retirementyears)).map(function (x, i) { return i; })
 
-    // var spending = this.retirementspending;
-    // var rsavings = this.retirementwithsavings;
-    // var rincome = this.retirementincome;
-    // var ryears = this.retirementyears;
+    var yearlySpending = [rsaving];
+    var bgColors = []
 
-    var rspend = this.retirementspending;
-    var rsaving = this.retirementwithsavings;
-    var yearlyspending = rsaving;
-    var retirementYearly = [];
+    for (var x = retireage; x < deadage; x++){
+      rsaving = rsaving - rspend;
+      yearlyspendingamount = rsaving - rspend;
+      rsaving = yearlyspendingamount ;
+      yearlySpending.push(yearlyspendingamount );
 
-    for(var x = retireage; x < deadage; x++ ){
-        rsaving = rsaving - rspend;
-    yearlyspending = (rsaving - rspend);
-    retirementYearly.push(yearlyspending);
     }
 
-// console.log(retirementYearly);
+    for (var u = 0; u < yearlySpending.length; u++){
+      if (yearlySpending[u] <= 0){
+        bgColors.push('#ea7171')
+      }
+      else {
+        bgColors.push('#71eabb')
+      }
+    }
 
-    chartData.labels = ageArray
+    console.log(bgColors);
+    datasets.push({ data: yearlySpending, backgroundColor: bgColors, label: 'Retirement Value Over Time' })
+
+//console.log(retirementYearly);
+
+    chartData.labels =  ageArray
     chartData.datasets = datasets
-
-
     return chartData
-  }
+  },
+  getSSBenefitsChartOptions: function () {
+      let opts = this.options
+      return opts
+    },
 },
 mounted() {
     // EventBus.$on('returnData', (payload) => {
@@ -81,6 +122,7 @@ mounted() {
     this.retirementincome = this.$store.getters.getRetirementIncome;
     this.retirementspending = this.$store.getters.getRetirementSpending;
     this.retirementyears = this.$store.getters.getRetirementYears;
+    this.retirementsalary = this.$store.getters.getRetirementSalary;
 },
 }
 </script>

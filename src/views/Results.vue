@@ -1,15 +1,21 @@
 <template>
-<div>
+<div class="px-4">
   <h1>Results Page</h1>
-        retirement years: {{ retirementyears }} <br/>
-        {{ yearstilretire }} years til retirement <br/>
-        money made from now until retirement: {{moneymade}}<br/>
-        money at retirement beginning: {{ moneyatretirement}}<br/>
-        retirement income (for {{ retirementyears}} years of: {{retirementincome}} <br/>
-        retirement total with no spending: {{retirementwithsavings}}<br/>
-        money spent during retirement: {{retirementspending}}<br/>
-        your money will last: {{ incomelongevity }}
-        <longevity-results></longevity-results>
+  <div class="row px-4">
+    <div class="col-sm-6">
+      retirement years: {{ retirementyears }} <br/>
+    {{ yearstilretire }} years til retirement <br/>
+    money made from now until retirement: {{moneymade}}<br/>
+    money at retirement beginning: {{ moneyatretirement}}<br/>
+    retirement income (for {{ retirementyears}} years of: {{retirementincome}} <br/>
+    retirement total with no spending: {{retirementwithsavings}}<br/>
+    money spent during retirement: {{retirementspending}}<br/>
+    your money will last: {{ incomelongevity }}
+    </div>
+    <div class="col-sm-4">
+      <longevity-results></longevity-results>
+    </div>
+  </div>
 </div>
 </template>
 

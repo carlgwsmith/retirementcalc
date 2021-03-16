@@ -77,7 +77,8 @@ watch: {
         retirementincome: this.returnedData.retirementincome,
         retirementwithsavings: this.returnedData.retirementwithsavings,
         incomelongevity: this.returnedData.incomelongevity,
-        retirementspending: this.returnedData.retirementspending
+        retirementspending: this.returnedData.retirementspending,
+        retirementsalary: this.form.retirementsalary
       }
 
       // EventBus.$emit("returnData", this.returnedData.yearstilretire);

@@ -14,7 +14,8 @@ export default new Vuex.Store({
     incomelongevity: 0,
     retirementincome: 0,
     retirementwithsavings: 0,
-    retirementspending: 0
+    retirementspending: 0,
+    retirementsalary: 0,
   },
   mutations: {
     setState(state, payload){
@@ -29,6 +30,7 @@ export default new Vuex.Store({
       state.retirementincome = payload.retirementincome;
       state.retirementwithsavings = payload.retirementwithsavings;
       state.retirementspending = payload.retirementspending;
+      state.retirementsalary = payload.retirementsalary;
     },
     setRetireAge(state, payload){
       state.retireage = payload.retireage;
@@ -60,6 +62,9 @@ export default new Vuex.Store({
     setRetirementSpending(state, payload){
       state.retirementspending = payload.retirementspending;
     },
+    setRetirementSalary(state, payload){
+      state.retirementsalary = payload.retirementsalary;
+    }
   },
   actions: {
   },
@@ -73,7 +78,7 @@ export default new Vuex.Store({
       return state.retireage
     },
     getLifeSpan(state) {
-      return state.life
+      return state.lifespan
     },
     getRetirementYears (state){
       return state.retirementyears
@@ -98,6 +103,9 @@ export default new Vuex.Store({
     },
     getRetirementSpending(state){
       return state.retirementspending
+    },
+    getRetirementSalary(state){
+      return state.retirementsalary
     },
   }
 })

@@ -95,6 +95,7 @@ border: 6px solid rgb(230, 230, 230);
 padding: 20px;
 border-radius: 15px;
 box-shadow: 2px 2px 2px rgb(240, 240, 240);
+background: white;
 }
 input {
     margin-bottom: 16px;

@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div class="row">
-      <div class="col-sm-12 col-md-12 px-5">
+      <div class="col-sm-12 col-md-6 px-5">
         <Banner msg="Quick Retirement Calculator"/>
       </div>
-      <div class="col-sm-12 col-md-12 px-5">
+      <div class="col-sm-12 col-md-6 px-5">
         <h2 class="forminstructions">Please fill out the fields below and we'll give you a few illustrations on your retirement expectations.</h2>
         <retirement-form></retirement-form>
       </div>
@@ -32,5 +32,6 @@ export default {
 <style scoped>
 .forminstructions{
   font-size:16px !important;
+  padding-left: 20px;
 }
 </style>

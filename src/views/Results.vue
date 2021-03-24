@@ -73,7 +73,7 @@ computed: {
 }
 </script>
 
-<style>
+<style scoped>
 .headertext{
   border-bottom:1px solid #c9c9c9;
 }

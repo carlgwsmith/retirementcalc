@@ -5,7 +5,6 @@
             <input-field unique="retireage" label="Retirement Age" v-on:updated="form.retireage = $event"></input-field>
             <input-field unique="totalsavings" label="Current Total Savings" v-on:updated="form.totalsavings = $event"></input-field>
             <input-field unique="annualincome" label="Annual Household Income" v-on:updated="form.annualincome = $event"></input-field>
-            <input-field unique="yearlyinterest" label="Expected Yearly Interest" v-on:updated="form.yearlyinterest = $event"></input-field>
             <input-field unique="annualspending" label="What is your expected annual spending in retirement?" v-on:updated="form.annualspending = $event"></input-field>
             <input-field unique="retirementsalary" label="Expected Annual Income in Retirement" v-on:updated="form.retirementsalary = $event"></input-field>
             <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event"></input-field>
@@ -96,5 +95,8 @@ border: 6px solid rgb(230, 230, 230);
 padding: 20px;
 border-radius: 15px;
 box-shadow: 2px 2px 2px rgb(240, 240, 240);
+}
+input {
+    margin-bottom: 16px;
 }
 </style>

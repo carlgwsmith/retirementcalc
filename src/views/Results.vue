@@ -1,32 +1,45 @@
 <template>
 <div class="px-4">
-  <h1>Results Page</h1>
-  <div class="row px-4">
-    <div class="col-sm-6">
-      retirement years: {{ retirementyears }} <br/>
-    {{ yearstilretire }} years til retirement <br/>
-    money made from now until retirement: {{moneymade}}<br/>
-    money at retirement beginning: {{ moneyatretirement}}<br/>
-    retirement income (for {{ retirementyears}} years of: {{retirementincome}} <br/>
-    retirement total with no spending: {{retirementwithsavings}}<br/>
-    money spent during retirement: {{retirementspending}}<br/>
-    your money will last: {{ incomelongevity }}
+  <h1 class="headertext">Retirement Analysis</h1>
+  <div class="row px-4" >
+      <div class="col-sm-12 col-md-6">
+        <number-roller></number-roller>
+        <!-- retirement years: {{ retirementyears }} <br/>
+      {{ yearstilretire }} years til retirement <br/>
+      money made from now until retirement: {{moneymade}}<br/>
+      money at retirement beginning: {{ moneyatretirement}}<br/>
+      retirement income (for {{ retirementyears}} years of: {{retirementincome}} <br/>
+      retirement total with no spending: {{retirementwithsavings}}<br/>
+      money spent during retirement: {{retirementspending}}<br/>
+      your money will last: {{ incomelongevity }} -->
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <longevity-results></longevity-results>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <longevity-results></longevity-results>
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        Based on your spending of {{retirementspending / 12}} per month. You will need {{retirementspending * retirementyears}} to last the duration of your planned retirement.
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <needs-results/>
+      </div>
     </div>
-  </div>
 </div>
 </template>
 
 <script>
 // import EventBus from "../eventBus"
 import LongevityResults from '../components/LongevityResults.vue';
+import NeedsResults from '../components/NeedsResults.vue';
+import numberRoller from '../components/numberRoller.vue';
 
 export default {
   Name:'Results',
   components: {
-  LongevityResults
+  LongevityResults,
+  numberRoller,
+  NeedsResults
   },
 data: () => ({
     retirementyears: 0,
@@ -61,5 +74,12 @@ computed: {
 </script>
 
 <style>
-
+.headertext{
+  border-bottom:1px solid #c9c9c9;
+}
+.row {
+  border-bottom:1px solid #c9c9c9;
+  margin:20px 0;
+  padding:15px 0;
+}
 </style>

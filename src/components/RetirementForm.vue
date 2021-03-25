@@ -1,28 +1,40 @@
 <template>
   <div class="formContainer">
      <form method="post" action="#">
-            <input-field unique="currentage" label="Current Age" v-on:updated="form.currentage = $event"></input-field>
-            <input-field unique="retireage" label="Retirement Age" v-on:updated="form.retireage = $event"></input-field>
-            <input-field unique="totalsavings" label="Current Total Savings" v-on:updated="form.totalsavings = $event"></input-field>
-            <input-field unique="annualincome" label="Annual Household Income" v-on:updated="form.annualincome = $event"></input-field>
-            <input-field unique="annualspending" label="What is your expected annual spending in retirement?" v-on:updated="form.annualspending = $event"></input-field>
-            <input-field unique="retirementsalary" label="Expected Annual Income in Retirement" v-on:updated="form.retirementsalary = $event"></input-field>
-            <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event"></input-field>
-            <div class="input-wrapper">
+       <form-wizard color="#0de4b5" @on-complete="emitData">
+         <h5 slot="title">Fill out a few simple questions and we'll give you a rundown of your retirement expectations.</h5>   
+        <tab-content title="Personal details">
+          <input-field unique="currentage" label="Current Age" v-on:updated="form.currentage = $event"></input-field>
+          <input-field unique="retireage" label="Retirement Age" v-on:updated="form.retireage = $event"></input-field>
+          <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event"></input-field>
+        </tab-content>
+        <tab-content title="Additional Info">
+          <input-field unique="totalsavings" label="Current Total Savings" v-on:updated="form.totalsavings = $event"></input-field>
+          <input-field unique="annualincome" label="Annual Household Income" v-on:updated="form.annualincome = $event"></input-field>
+        </tab-content>
+        <tab-content title="Last step">
+          <input-field unique="annualspending" label="What is your expected annual spending in retirement?" v-on:updated="form.annualspending = $event"></input-field>
+          <input-field unique="retirementsalary" label="Expected Annual Income in Retirement" v-on:updated="form.retirementsalary = $event"></input-field>
+        </tab-content>
+        </form-wizard>
+            <!-- <div class="input-wrapper">
                 <b-button block @click.prevent="emitData">Calculate</b-button>
-            </div>
-        </form>
-
+            </div> -->
+      </form>
   </div>
 </template>
 
 <script>
 import InputField from '../components/InputField.vue'
+import {FormWizard, TabContent} from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 // import EventBus from '../eventBus'
 
 export default {
   components: {
-    InputField
+    InputField,
+    FormWizard,
+    TabContent
   },
   data() {
     return {
@@ -99,5 +111,12 @@ background: white;
 }
 input {
     margin-bottom: 16px;
+}
+.vue-form-wizard .wizard-icon-circle {
+    border: 5px solid #0de4b5;
+}
+.finish-button{
+  background-color:#43A047 !important;
+  border-color: #43A047 !important;
 }
 </style>

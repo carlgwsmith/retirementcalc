@@ -5,7 +5,6 @@
         <Banner msg="Quick Retirement Calculator"/>
       </div>
       <div class="col-sm-12 col-md-6 px-5">
-        <h2 class="forminstructions">Please fill out the fields below and we'll give you a few illustrations on your retirement expectations.</h2>
         <retirement-form></retirement-form>
       </div>
     </div>

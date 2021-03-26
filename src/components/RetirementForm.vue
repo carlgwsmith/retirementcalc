@@ -110,10 +110,11 @@ box-shadow: 2px 2px 2px rgb(240, 240, 240);
 background: white;
 }
 input {
-    margin-bottom: 16px;
+    margin-bottom: 16px !important;
 }
 .vue-form-wizard .wizard-icon-circle {
     border: 5px solid #0de4b5;
+    background-color:#0de4b5;
 }
 .finish-button{
   background-color:#43A047 !important;

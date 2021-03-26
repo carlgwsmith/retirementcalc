@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <div id="nav" class="row">
-      <div class="col-sm-6 text-left">
+      <div class="col-6 text-left">
         <div class="brand">
            Company Logo
         </div>
       </div>
-      <div class="col-sm-6 text-right">
+      <div class="col-6 text-right">
         <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
       </div>
     </div>
-    <router-view/>
+    <router-view class="defaults"/>
   </div>
 </template>
 
@@ -20,7 +20,9 @@
 
 /* font-family: 'Brygada 1918', serif;
 font-family: 'Work Sans', sans-serif; */
-
+*{
+  margin:0 !important;
+}
 #app {
   font-family: 'Work Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -30,11 +32,15 @@ font-family: 'Work Sans', sans-serif; */
     /* top, transparent red, faked with gradient */ 
     linear-gradient(
       rgb(255, 255, 255), 
-      rgba(216, 234, 255, 0.753)
+      rgba(238, 246, 255, 0.877)
     ),
     /* bottom, image */
     url("https://images.unsplash.com/photo-1473186578172-c141e6798cf4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=966&q=80");
   background-size:cover;
+}
+.defaults{
+  padding:40px;
+  min-height: 100vh;
 }
 .brand{
   margin-top:auto;
@@ -55,8 +61,63 @@ font-family: 'Work Sans', sans-serif; */
   font-weight: bold;
   color: #2c3e50;
 }
-
+input {
+    margin-bottom: 16px !important;
+}
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #0de4b5;
+}
+.wizard-icon-container {
+    margin: -1px !important;
+    border-radius: 100% !important;
+}
+.slide-in-left {
+	-webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.fade-in {
+	-webkit-animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s both;
+  animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s both;
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

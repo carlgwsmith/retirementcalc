@@ -1,8 +1,8 @@
 <template>
 <div class="px-4">
   <h1 class="headertext">Retirement Analysis</h1>
-  <div class="row px-4" >
-      <div class="col-sm-12 col-md-6">
+  <div class="row px-4">
+      <div class="col-sm-12 col-md-6 content-middle">
         <number-roller></number-roller>
         <!-- retirement years: {{ retirementyears }} <br/>
       {{ yearstilretire }} years til retirement <br/>
@@ -18,8 +18,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        Based on your spending of {{retirementspending / 12}} per month. You will need {{retirementspending * retirementyears}} to last the duration of your planned retirement.
+      <div class="col-sm-12 col-md-6 content-middle">
+       <p class="needs-text">Based on your spending of ${{retirementspending / 12}} per month. You will need ${{retirementspending * retirementyears}} to last the duration of your planned retirement</p>
       </div>
       <div class="col-sm-12 col-md-6">
         <needs-results/>
@@ -74,6 +74,10 @@ computed: {
 </script>
 
 <style scoped>
+.content-middle{
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
 .headertext{
   border-bottom:1px solid #c9c9c9;
 }
@@ -81,5 +85,8 @@ computed: {
   border-bottom:1px solid #c9c9c9;
   margin:20px 0;
   padding:15px 0;
+}
+.needs-text{
+  font-size:1.4em;
 }
 </style>

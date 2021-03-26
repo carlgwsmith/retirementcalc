@@ -37,16 +37,16 @@ export default {
     font-size:35px;
 	}
 div.roller{
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
     .retirementyears{
-    padding: 4rem 5rem;
-    color: rgb(32, 228, 153);
+    padding: 4rem 0rem;
+    color: rgb(21, 182, 120);
     text-align: center;
     }
     .rollertext{
-        font-size:10em;
+        font-size:7em;
     }
     .toptext{
         margin-bottom:-3em;

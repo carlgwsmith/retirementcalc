@@ -1,10 +1,15 @@
 <template>
   <div class="home">
     <div class="row">
-      <div class="col-sm-12 col-md-6 px-5">
+      <div class="col-sm-12">
         <Banner msg="Quick Retirement Calculator"/>
       </div>
-      <div class="col-sm-12 col-md-6 px-5">
+    </div>
+    <div class="row pt-4">
+      <div class="col-xs-12 col-sm-4 fade-in">
+        Advertising Content
+      </div>
+      <div class="col-xs-12 col-sm-8 fade-in">
         <retirement-form></retirement-form>
       </div>
     </div>

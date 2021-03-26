@@ -2,9 +2,11 @@
   <div id="app">
     <div id="nav" class="row">
       <div class="col-6 text-left">
+        <router-link to="/">
         <div class="brand">
            Company Logo
         </div>
+        </router-link>
       </div>
       <div class="col-6 text-right">
         <router-link to="/">Home</router-link> |

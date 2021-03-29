@@ -1,8 +1,8 @@
 <template>
-     <b-form-group>
+    <b-form-group>
         <label :for="unique">{{ label }}</label>
-        <b-form-input type="number" :id="unique" v-model="value" @input="$emit('updated', value)" :placeholder="placeholder"></b-form-input>
-     </b-form-group>
+        <currency-input class="form-control" currency="USD" v-model="value" @input="$emit('updated', value)" :placeholder="placeholder" :id="unique"/>
+    </b-form-group>
 </template>
 
 <script>

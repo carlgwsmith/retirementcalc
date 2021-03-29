@@ -25,6 +25,14 @@
         <needs-results/>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 content-middle">
+        TEXT
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <added-savings-results></added-savings-results>
+      </div>
+    </div>
 </div>
 </template>
 
@@ -33,13 +41,15 @@
 import LongevityResults from '../components/LongevityResults.vue';
 import NeedsResults from '../components/NeedsResults.vue';
 import numberRoller from '../components/numberRoller.vue';
+import AddedSavingsResults from '../components/AddedSavingsResults.vue';
 
 export default {
   Name:'Results',
   components: {
   LongevityResults,
   numberRoller,
-  NeedsResults
+  NeedsResults,
+  AddedSavingsResults
   },
 data: () => ({
     retirementyears: 0,

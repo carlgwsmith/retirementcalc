@@ -6,11 +6,13 @@
       </div>
     </div>
     <div class="row pt-4">
-      <div class="col-xs-12 col-sm-4 fade-in">
-        Advertising Content
-      </div>
       <div class="col-xs-12 col-sm-8 fade-in">
         <retirement-form></retirement-form>
+      </div>
+      <div class="col-xs-12 col-sm-4 fade-in">
+        <div class="advert">
+          Advertising Content
+        </div>
       </div>
     </div>
   </div>
@@ -37,5 +39,12 @@ export default {
 .forminstructions{
   font-size:16px !important;
   padding-left: 20px;
+}
+.advert{
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border: 6px solid #0de4b5;
+  border-radius: 20px;
+  padding: 20px;
 }
 </style>

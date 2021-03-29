@@ -4,17 +4,18 @@
        <form-wizard color="#0de4b5" @on-complete="emitData">
          <h5 slot="title">Fill out a few simple questions and we'll give you a rundown of your retirement expectations.</h5>   
         <tab-content title="Personal details">
-          <input-field unique="currentage" label="Current Age" v-on:updated="form.currentage = $event"></input-field>
-          <input-field unique="retireage" label="Retirement Age" v-on:updated="form.retireage = $event"></input-field>
-          <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event"></input-field>
+          <input-field unique="currentage" label="Current Age" v-on:updated="form.currentage = $event" placeholder="35"></input-field>
+          <input-field unique="retireage" label="Retirement Age" v-on:updated="form.retireage = $event" placeholder="64"></input-field>
+          <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event" placeholder="84"></input-field>
         </tab-content>
         <tab-content title="Additional Info">
-          <input-field unique="totalsavings" label="Current Total Savings" v-on:updated="form.totalsavings = $event"></input-field>
-          <input-field unique="annualincome" label="Annual Household Income" v-on:updated="form.annualincome = $event"></input-field>
+          <currency-field unique="totalsavings" label="Current Total Savings" v-on:updated="form.totalsavings = $event" placeholder="200000"></currency-field>
+          <currency-field unique="annualsavings" label="Annual Retirement Savings" v-on:updated="form.annualsavings = $event" placeholder="125000"></currency-field>
+          <currency-field unique="annualincome" label="Annual Household Income" v-on:updated="form.annualincome = $event" placeholder="125000"></currency-field>
         </tab-content>
         <tab-content title="Last step">
-          <input-field unique="annualspending" label="What is your expected annual spending in retirement?" v-on:updated="form.annualspending = $event"></input-field>
-          <input-field unique="retirementsalary" label="Expected Annual Income in Retirement" v-on:updated="form.retirementsalary = $event"></input-field>
+          <currency-field unique="annualspending" label="What is your expected annual spending in retirement?" v-on:updated="form.annualspending = $event" placeholder="20000"></currency-field>
+          <currency-field unique="retirementsalary" label="Expected Annual Income in Retirement" v-on:updated="form.retirementsalary = $event" placeholder="15000"></currency-field>
         </tab-content>
         </form-wizard>
             <!-- <div class="input-wrapper">
@@ -26,6 +27,7 @@
 
 <script>
 import InputField from '../components/InputField.vue'
+import CurrencyField from '../components/CurrencyField.vue'
 import {FormWizard, TabContent} from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 // import EventBus from '../eventBus'
@@ -34,7 +36,8 @@ export default {
   components: {
     InputField,
     FormWizard,
-    TabContent
+    TabContent,
+    CurrencyField
   },
   data() {
     return {
@@ -44,6 +47,7 @@ export default {
           annualincome: 0,
           yearlyinterest: 0,
           totalsavings:0,
+          annualsavings:0,
           annualspending: 0,
           retirementsalary: 0,
           lifespan: 0
@@ -68,6 +72,7 @@ watch: {
         this.returnedData.moneymade = parseInt(newValue.annualincome) * parseInt(this.returnedData.yearstilretire);
         this.returnedData.moneyatretirement = parseInt(this.returnedData.moneymade) + parseInt(newValue.totalsavings);
         this.returnedData.retirementincome = parseInt(newValue.retirementsalary) * parseInt(this.returnedData.retirementyears);
+        this.returnedData.moneysavedforretirement = parseInt(newValue.moneysavedforretirement);
         this.returnedData.retirementwithsavings = parseInt(this.returnedData.moneyatretirement) + parseInt(newValue.retirementsalary);
         //this.returnedData.retirementspending= parseInt(this.returnedData.retirementwithsavings) - (parseInt(newValue.annualspending) * parseInt(this.returnedData.retirementyears));
         this.returnedData.retirementspending= parseInt(newValue.annualspending) * parseInt(this.returnedData.retirementyears);
@@ -86,6 +91,7 @@ watch: {
         moneymade: this.returnedData.moneymade,
         moneyatretirement: this.returnedData.moneyatretirement,
         retirementincome: this.returnedData.retirementincome,
+        moneysavedforretirement: this.returnedData.moneysavedforretirement,
         retirementwithsavings: this.returnedData.retirementwithsavings,
         incomelongevity: this.returnedData.incomelongevity,
         retirementspending: this.returnedData.retirementspending,
@@ -103,14 +109,11 @@ watch: {
 
 <style scoped>
 .formContainer{
-border: 6px solid rgb(230, 230, 230);
-padding: 20px;
-border-radius: 15px;
-box-shadow: 2px 2px 2px rgb(240, 240, 240);
-background: white;
-}
-input {
-    margin-bottom: 16px !important;
+  border: 6px solid rgb(230, 230, 230);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 4px 8px rgb(97 97 97 / 43%);
+  background: white;
 }
 .vue-form-wizard .wizard-icon-circle {
     border: 5px solid #0de4b5;

@@ -13,6 +13,7 @@ export default new Vuex.Store({
     moneymade:0,
     incomelongevity: 0,
     retirementincome: 0,
+    moneysavedforretirement:0,
     retirementwithsavings: 0,
     retirementspending: 0,
     retirementsalary: 0,
@@ -28,6 +29,7 @@ export default new Vuex.Store({
       state.moneymade = payload.moneymade;
       state.incomelongevity = payload.incomelongevity;
       state.retirementincome = payload.retirementincome;
+      state.moneysavedforretirement = payload.moneysavedforretirement;
       state.retirementwithsavings = payload.retirementwithsavings;
       state.retirementspending = payload.retirementspending;
       state.retirementsalary = payload.retirementsalary;
@@ -52,6 +54,9 @@ export default new Vuex.Store({
     },
     setIncomeLongevity(state, payload){
       state.incomelongevity = payload.incomelongevity;
+    },
+    setMoneySavedForRetirement(state, payload){
+      state.moneysavedforretirement = payload.moneysavedforretirement;
     },
     setRetirementIncome(state, payload){
       state.retirementincome = payload.retirementincome;
@@ -94,6 +99,9 @@ export default new Vuex.Store({
     },
     getIncomeLongevity(state){
       return state.incomelongevity
+    },
+    getMoneySavedForRetirement(state){
+      return state.moneysavedforretirement;
     },
     getRetirementIncome(state){
       return state.retirementincome

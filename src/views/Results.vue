@@ -19,7 +19,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6 content-middle">
-       <p class="needs-text">Based on your spending of ${{retirementspending / 12}} per month. You will need ${{retirementspending * retirementyears}} to last the duration of your planned retirement</p>
+       <p class="needs-text">Based on your spending of ${{retirementspending / retirementyears}} per year. You will need ${{retirementspending}} to last the duration of your planned retirement</p>
       </div>
       <div class="col-sm-12 col-md-6">
         <needs-results/>
@@ -74,6 +74,7 @@ mounted() {
     this.retirementincome = this.$store.getters.getRetirementIncome;
     this.retirementwithsavings = this.$store.getters.getRetirementWithSavings;
     this.retirementspending = this.$store.getters.getRetirementSpending;
+
 },
 computed: {
   returnState () {

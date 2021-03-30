@@ -16,6 +16,7 @@ export default {
     retirementincome: 0,
     retirementyears: 0,
     retirementsalary: 0,
+    spending:0,
     options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -32,7 +33,7 @@ export default {
         },
         title: {
           display: true,
-          text: "How much money do you need to retire at  {{retireage}}",
+          text: "How Much Money Do You Need to Retire?",
           fontSize: "16",
         },
         pointLabels: {
@@ -65,8 +66,12 @@ export default {
   getNeedsChartData: function () {
     let chartData = {};
     let datasets = [];
+
+    var spending = this.retirementyears * this.spending;
+    var retiresavings = this.retirementwithsavings - spending;
     var rsalary = this.retirementsalary * this.retirementyears;
-    var haveAmount = this.retirementwithsavings + rsalary;
+
+    var haveAmount = retiresavings + rsalary;
     var needAmount = this.retirementspending
 
 
@@ -95,6 +100,7 @@ mounted() {
     this.retirementspending = this.$store.getters.getRetirementSpending;
     this.retirementyears = this.$store.getters.getRetirementYears;
     this.retirementsalary = this.$store.getters.getRetirementSalary;
+    this.spending = this.$store.getters.getNonRetirementSpending;
 },
 }
 </script>

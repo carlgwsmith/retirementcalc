@@ -23,6 +23,8 @@ export default {
     retirementincome: 0,
     retirementyears: 0,
     retirementsalary: 0,
+    yearstilretire:0,
+    spending:0,
     // ageArray: [],
     //retirementYearly: [],
     options: {
@@ -69,13 +71,22 @@ export default {
   getLongevityChartData: function () {
     let chartData = {};
     let datasets = [];
+    let ageArray =[];
     var retireage = this.retireage;
     var deadage = this.lifespan;
     var rspend = this.retirementspending / this.retirementyears;
     var yearlyspendingamount = 0;
     var rsalary = this.retirementsalary * this.retirementyears;
-    var rsaving = this.retirementwithsavings + rsalary;
-    var ageArray = Array.apply(null, Array(this.retirementyears)).map(function (x, i) { return i; })
+    var spendingCurrentTilRetirement = this.spending * this.retirementyears;
+    var retirementsavings = this.retirementwithsavings - spendingCurrentTilRetirement;
+    var rsaving = (retirementsavings + rsalary);
+
+    
+    for (var i = retireage; i <= deadage; i++) {
+    ageArray.push(i);
+    }
+
+    // var ageArray = Array.apply(null, Array(this.retirementyears)).map(function (x, i) { return i; })
 
     var yearlySpending = [rsaving];
     var bgColors = []
@@ -85,8 +96,9 @@ export default {
       yearlyspendingamount = rsaving - rspend;
       rsaving = yearlyspendingamount ;
       yearlySpending.push(yearlyspendingamount );
-
     }
+
+
 
     for (var u = 0; u < yearlySpending.length; u++){
       if (yearlySpending[u] <= 0){
@@ -97,12 +109,13 @@ export default {
       }
     }
 
-    console.log(bgColors);
+    console.log(yearlySpending);
     datasets.push({ data: yearlySpending, backgroundColor: bgColors, label: 'Retirement Value Over Time' })
 
 //console.log(retirementYearly);
 
     chartData.labels =  ageArray
+    console.log(ageArray);
     chartData.datasets = datasets
     return chartData
   },
@@ -123,6 +136,8 @@ mounted() {
     this.retirementspending = this.$store.getters.getRetirementSpending;
     this.retirementyears = this.$store.getters.getRetirementYears;
     this.retirementsalary = this.$store.getters.getRetirementSalary;
+    this.spending = this.$store.getters.getNonRetirementSpending;
+    this.yearstilretire = this.$store.getters.getYearsTilRetire;
 },
 }
 </script>

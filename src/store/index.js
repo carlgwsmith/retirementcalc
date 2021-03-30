@@ -13,10 +13,11 @@ export default new Vuex.Store({
     moneymade:0,
     incomelongevity: 0,
     retirementincome: 0,
-    moneysavedforretirement:0,
+    retirementsavings:0,
     retirementwithsavings: 0,
     retirementspending: 0,
     retirementsalary: 0,
+    nonrannualspending:0,
   },
   mutations: {
     setState(state, payload){
@@ -29,10 +30,11 @@ export default new Vuex.Store({
       state.moneymade = payload.moneymade;
       state.incomelongevity = payload.incomelongevity;
       state.retirementincome = payload.retirementincome;
-      state.moneysavedforretirement = payload.moneysavedforretirement;
+      state.retirementsavings = payload.retirementsavings;
       state.retirementwithsavings = payload.retirementwithsavings;
       state.retirementspending = payload.retirementspending;
       state.retirementsalary = payload.retirementsalary;
+      state.nonrannualspending = payload.nonrannualspending;
     },
     setRetireAge(state, payload){
       state.retireage = payload.retireage;
@@ -55,8 +57,8 @@ export default new Vuex.Store({
     setIncomeLongevity(state, payload){
       state.incomelongevity = payload.incomelongevity;
     },
-    setMoneySavedForRetirement(state, payload){
-      state.moneysavedforretirement = payload.moneysavedforretirement;
+    setRetirementSavings(state, payload){
+      state.retirementsavings = payload.retirementsavings;
     },
     setRetirementIncome(state, payload){
       state.retirementincome = payload.retirementincome;
@@ -69,6 +71,9 @@ export default new Vuex.Store({
     },
     setRetirementSalary(state, payload){
       state.retirementsalary = payload.retirementsalary;
+    },
+    setNonRetirementSpending (state, payload){
+      state.nonrannualspending = payload.nonrannualspending;
     }
   },
   actions: {
@@ -100,8 +105,8 @@ export default new Vuex.Store({
     getIncomeLongevity(state){
       return state.incomelongevity
     },
-    getMoneySavedForRetirement(state){
-      return state.moneysavedforretirement;
+    getRetirementSavings(state){
+      return state.retirementsavings;
     },
     getRetirementIncome(state){
       return state.retirementincome
@@ -115,5 +120,8 @@ export default new Vuex.Store({
     getRetirementSalary(state){
       return state.retirementsalary
     },
+    getNonRetirementSpending(state){
+      return state.nonrannualspending
+    }
   }
 })

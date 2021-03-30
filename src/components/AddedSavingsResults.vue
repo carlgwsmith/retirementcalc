@@ -14,7 +14,7 @@
 <script>
 import AdditionalSavings from './charts/AdditionalSavings.vue';
 export default {
-    Name: 'Additional Savings',
+    Name: 'Longevity Results',
     data: () => ({
     retireage:0,
     lifespan:0,
@@ -23,6 +23,8 @@ export default {
     retirementincome: 0,
     retirementyears: 0,
     retirementsalary: 0,
+    retirementsavings:0,
+    spending:0,
     // ageArray: [],
     //retirementYearly: [],
     options: {
@@ -39,7 +41,7 @@ export default {
         },
         title: {
           display: true,
-          text: "What if you saved an extra 20% a year?",
+          text: "The Potential of More Savings",
           fontSize: "16",
         },
         pointLabels: {
@@ -63,29 +65,43 @@ export default {
         AdditionalSavings
     },
       computed: {
-          returnState () {
+        AdditionalSavingseturnState () {
     return this.$store.getters.getState;
   },
-  getLongevityChartData: function () {
+  getAddedSavingsChartData: function () {
     let chartData = {};
     let datasets = [];
+    let ageArray =[];
     var retireage = this.retireage;
+    var retirementsavings = this.retirementsavings;
     var deadage = this.lifespan;
     var rspend = this.retirementspending / this.retirementyears;
-    var yearlyspendingamount = 0;
+    var yearlysavingamount = 0;
     var rsalary = this.retirementsalary * this.retirementyears;
     var rsaving = this.retirementwithsavings + rsalary;
-    var ageArray = Array.apply(null, Array(this.retirementyears)).map(function (x, i) { return i; })
+    
+    for (var i = retireage; i <= deadage; i++) {
+    ageArray.push(i);
+    }
+
+    // var ageArray = Array.apply(null, Array(this.retirementyears)).map(function (x, i) { return i; })
 
     var yearlySpending = [rsaving];
+    var yearlySpending2 = [rsaving]
     var bgColors = []
 
     for (var x = retireage; x < deadage; x++){
       rsaving = rsaving - rspend;
-      yearlyspendingamount = rsaving - rspend;
-      rsaving = yearlyspendingamount ;
-      yearlySpending.push(yearlyspendingamount );
+      yearlysavingamount = (rsaving - rspend);
+      rsaving = yearlysavingamount ;
+      yearlySpending.push(yearlysavingamount + retirementsavings );
+    }
 
+    for (var y = retireage; y < deadage; y++){
+      rsaving = rsaving - rspend;
+      yearlysavingamount = rsaving - rspend;
+      rsaving = yearlysavingamount ;
+      yearlySpending2.push(yearlysavingamount);
     }
 
     for (var u = 0; u < yearlySpending.length; u++){
@@ -97,16 +113,17 @@ export default {
       }
     }
 
-    console.log(bgColors);
-    datasets.push({ data: yearlySpending, backgroundColor: bgColors, label: 'Retirement Value Over Time' })
+    console.log(this.retirementsavings);
+    datasets.push({ data: yearlySpending, label: 'Retirement Value Over Time' }, {data: yearlySpending2, label: 'Retirement Value Over Time 2'})
 
 //console.log(retirementYearly);
 
     chartData.labels =  ageArray
+    console.log(ageArray);
     chartData.datasets = datasets
     return chartData
   },
-  getSSBenefitsChartOptions: function () {
+  getAddedSavingsChartOptions: function () {
       let opts = this.options
       return opts
     },
@@ -121,9 +138,10 @@ mounted() {
     this.retirementwithsavings = this.$store.getters.getRetirementWithSavings;
     this.retirementincome = this.$store.getters.getRetirementIncome;
     this.retirementspending = this.$store.getters.getRetirementSpending;
-    this.moneysavedforretirement = this.$store.getters.getMoneySavedForRetirement;
     this.retirementyears = this.$store.getters.getRetirementYears;
     this.retirementsalary = this.$store.getters.getRetirementSalary;
+    this.retirementsavings = this.$store.getters.getRetirementSavings;
+    this.spending = this.$store.getters.getNonRetirementSpending;
 },
 }
 </script>

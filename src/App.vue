@@ -4,7 +4,8 @@
       <div class="col-6 text-left">
         <router-link to="/">
         <div class="brand">
-           Company Logo
+           <i class="fas fa-piggy-bank"></i> FakeBoy Financial
+           <p class="tagline">We're not real!</p>
         </div>
         </router-link>
       </div>
@@ -49,8 +50,19 @@ font-family: 'Work Sans', sans-serif; */
   margin-bottom:auto;
   font-family: 'Brygada 1918', serif;
   font-weight:800;
-  font-size:1.5em;
-  color:#2c3e50;
+  font-size:2em;
+  color:#4d4d4d;
+  text-shadow:2px 2px 3px #4d4d4d4d;
+}
+.tagline {
+  margin-top:0px;
+  padding-top:0px;
+  font-family: 'Work Sans', Arial, sans-serif;
+  font-weight:500;
+  font-size:.4em;
+  letter-spacing: .2em;
+  color:rgb(179, 179, 179);
+  text-shadow: none;
 }
 #nav {
   padding: 30px;

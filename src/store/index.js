@@ -5,8 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    currentage: 0,
     retireage: 0,
     lifespan: 0,
+    annualincome: 0,
+    currentsavings: 0,
     retirementyears: 0,
     yearstilretire: 0,
     moneyatretirement: 0,
@@ -21,9 +24,11 @@ export default new Vuex.Store({
   },
   mutations: {
     setState(state, payload){
-      console.log (payload);
+      state.currentage = payload.currentage;
       state.retireage = payload.retireage;
+      state.currentsavings = payload.currentsavings;
       state.lifespan = payload.lifespan;
+      state.annualincome = payload.annualincome;
       state.retirementyears = payload.retirementyears;
       state.yearstilretire = payload.yearstilretire;
       state.moneyatretirement = payload.moneyatretirement;
@@ -35,12 +40,22 @@ export default new Vuex.Store({
       state.retirementspending = payload.retirementspending;
       state.retirementsalary = payload.retirementsalary;
       state.nonrannualspending = payload.nonrannualspending;
+    }
+    ,
+    setCurrentAge(state, payload){
+      state.currentage = payload.currenteage;
     },
     setRetireAge(state, payload){
       state.retireage = payload.retireage;
     },
     setLifeSpan(state, payload){
       state.lifespan = payload.lifespan;
+    },
+    setAnnualIncome(state, payload){
+      state.annualincome = payload.annualincome;
+    },
+    setCurrentSavings(state, payload){
+      state.currentsavings = payload.currentsavings
     },
     setRetirementYears(state, payload){
       state.retirementyears = payload.retirementyears;
@@ -84,11 +99,20 @@ export default new Vuex.Store({
     getState (state){
       return state
     },
+    getCurrentAge (state){
+      return state.currentage
+    },
     getRetireAge (state){
       return state.retireage
     },
+    getCurrentSavings (state){
+      return state.currentsavings
+    },
     getLifeSpan(state) {
       return state.lifespan
+    },
+    getAnnualIncome (state){
+      return state.annualincome
     },
     getRetirementYears (state){
       return state.retirementyears

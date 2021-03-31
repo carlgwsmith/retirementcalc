@@ -78,8 +78,6 @@ export default {
     var yearlySpending = [haveAmount, needAmount];
     var bgColors = ['#71eabb', '#ea7171']
     
-
-    console.log(bgColors);
     datasets.push({ data: yearlySpending, backgroundColor: bgColors, label: '' })
 
 

@@ -9,7 +9,7 @@
           <input-field unique="lifespan" label="Expected Lifespan" v-on:updated="form.lifespan = $event" placeholder="84"></input-field>
         </tab-content>
         <tab-content title="Additional Info">
-          <currency-field unique="totalsavings" label="Current Total Savings" v-on:updated="form.totalsavings = $event" placeholder="200000"></currency-field>
+          <currency-field unique="currentsavings" label="Current Total Savings" v-on:updated="form.currentsavings = $event" placeholder="200000"></currency-field>
           <currency-field unique="retirementsavings" label="Annual Retirement Savings" v-on:updated="form.retirementsavings = $event" placeholder="125000"></currency-field>
           <currency-field unique="annualincome" label="Annual Household Income" v-on:updated="form.annualincome = $event" placeholder="125000"></currency-field>
         </tab-content>
@@ -47,7 +47,7 @@ export default {
           retireage: 0,
           annualincome: 0,
           yearlyinterest: 0,
-          totalsavings:0,
+          currentsavings:0,
           retirementsavings:0,
           annualspending: 0,
           nonrannualspending:0,
@@ -64,7 +64,6 @@ export default {
         retirementwithsavings: 0,
         retirementspending: 0,
         nonrannualspending:0,
-        retirementsavings:0,
         }
     }
   },
@@ -74,9 +73,8 @@ watch: {
         this.returnedData.retirementyears = parseInt(newValue.lifespan) - parseInt(newValue.retireage);
         this.returnedData.yearstilretire = parseInt(newValue.retireage) - parseInt(newValue.currentage);
         this.returnedData.moneymade = (parseInt(newValue.annualincome) - parseInt(newValue.nonrannualspending)) * parseInt(this.returnedData.yearstilretire);
-        this.returnedData.moneyatretirement = parseInt(this.returnedData.moneymade) + parseInt(newValue.totalsavings);
+        this.returnedData.moneyatretirement = parseInt(this.returnedData.moneymade) + parseInt(newValue.currentsavings);
         this.returnedData.retirementincome = parseInt(newValue.retirementsalary) * parseInt(this.returnedData.retirementyears);
-        this.returnedData.retirementsavings = parseInt(newValue.retirementsavings);
         this.returnedData.nonrannualspending = parseInt(newValue.nonrannualspending);
         this.returnedData.retirementwithsavings = parseInt(this.returnedData.moneyatretirement) + parseInt(newValue.retirementsalary);
         //this.returnedData.retirementspending= parseInt(this.returnedData.retirementwithsavings) - (parseInt(newValue.annualspending) * parseInt(this.returnedData.retirementyears));
@@ -89,15 +87,18 @@ watch: {
   methods: {
     emitData () {
       const payload = {
+        currentage: this.form.currentage,
         retireage: this.form.retireage,
+        annualincome: this.form.annualincome,
         lifespan: this.form.lifespan,
+        currentsavings: this.form.currentsavings,
         retirementyears: this.returnedData.retirementyears,
         yearstilretire: this.returnedData.yearstilretire,
         moneymade: this.returnedData.moneymade,
         moneyatretirement: this.returnedData.moneyatretirement,
         retirementincome: this.returnedData.retirementincome,
         retirementwithsavings: this.returnedData.retirementwithsavings,
-        retirementsavings: this.returnedData.retirementsavings,
+        retirementsavings: this.form.retirementsavings,
         incomelongevity: this.returnedData.incomelongevity,
         retirementspending: this.returnedData.retirementspending,
         retirementsalary: this.form.retirementsalary,
@@ -115,7 +116,7 @@ watch: {
 
 <style scoped>
 .formContainer{
-  border: 6px solid rgb(230, 230, 230);
+  border: 6px solid #fff;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 5px 4px 8px rgb(97 97 97 / 43%);

@@ -109,13 +109,11 @@ export default {
       }
     }
 
-    console.log(yearlySpending);
     datasets.push({ data: yearlySpending, backgroundColor: bgColors, label: 'Retirement Value Over Time' })
 
 //console.log(retirementYearly);
 
     chartData.labels =  ageArray
-    console.log(ageArray);
     chartData.datasets = datasets
     return chartData
   },

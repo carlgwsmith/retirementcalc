@@ -27,7 +27,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6 content-middle">
-        TEXT
+        <p class="needs-text">You are off to a decent chart with your savings of {{currentsavings}}. Ideally, the optimal retirement savings is 15% of your current income. For you 15% of ${{annualincome}} comes out to ${{annualincome * .15}} a year.</p>
       </div>
       <div class="col-sm-12 col-md-6">
         <added-savings-results></added-savings-results>
@@ -59,7 +59,12 @@ data: () => ({
     incomelongevity: 0,
     retirementincome: 0,
     retirementwithsavings: 0,
-    retirementspending: 0
+    retirementspending: 0,
+    retirementsavings:0,
+    currentage: 0,
+    currentsavings: 0,
+    annualincome:0
+
 }),
 mounted() {
     // EventBus.$on('returnData', (payload) => {
@@ -73,7 +78,11 @@ mounted() {
     this.incomelongevity = this.$store.getters.getIncomeLongevity;
     this.retirementincome = this.$store.getters.getRetirementIncome;
     this.retirementwithsavings = this.$store.getters.getRetirementWithSavings;
+    this.retirementsavings = this.$store.getters.getRetirementSavings;
     this.retirementspending = this.$store.getters.getRetirementSpending;
+    this.currentage = this.$store.getters.getCurrentAge;
+    this.currentsavings = this.$store.getters.getCurrentSavings;
+    this.annualincome = this.$store.getters.getAnnualIncome;
 
 },
 computed: {

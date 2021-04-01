@@ -11,7 +11,7 @@
       </div>
       <div class="col-xs-12 col-sm-4 fade-in">
         <div class="advert">
-          Advertising Content
+          <img src="../assets/retirees.png" width="100%">
         </div>
       </div>
     </div>
@@ -40,11 +40,14 @@ export default {
   font-size:16px !important;
   padding-left: 20px;
 }
-.advert{
+/* .advert{
   height: 100%;
   background-color: rgb(255, 255, 255);
   border: 6px solid #0de4b5;
   border-radius: 20px;
   padding: 20px;
+} */
+.advert > img {
+      margin-top: 50px !important;
 }
 </style>

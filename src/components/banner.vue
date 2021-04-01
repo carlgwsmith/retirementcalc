@@ -33,7 +33,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #274c83;
 }
 p{
   font-size:1.2em;

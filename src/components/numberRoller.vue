@@ -42,7 +42,7 @@ div.roller{
 }
     .retirementyears{
     padding: 4rem 0rem;
-    color: rgb(21, 182, 120);
+    color: #0de4b5;
     text-align: center;
     }
     .rollertext{
@@ -57,10 +57,10 @@ div.roller{
         font-weight: 600;
     }
     .mediumtitle{
-        color:rgb(0, 176, 230);
+        color:rgb(0, 119, 230);
     }
     .badtitle{
-        color: rgb(228, 76, 76)
+        color:#e25959;
     }
     .tracking-in-expand-fwd {
 	-webkit-animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;

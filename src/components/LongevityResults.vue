@@ -32,17 +32,20 @@ export default {
         maintainAspectRatio: false,
         tooltipenabled: false,
         legend: {
-          display: true,
+          display: false,
           position: 'bottom',
           labels: {
             boxWidth: 8,
-            fontSize: 14
+            fontSize: 14,
           }
         },
         title: {
           display: true,
           text: "Retirement Portfolio Value Over Time with Spending ",
-          fontSize: "16",
+          fontSize: "22",
+          fontFamily:"'Brygada 1918', serif",
+          fontStyle:"800",
+          fontColor:"#274c83",
         },
         pointLabels: {
           display: false
@@ -51,7 +54,9 @@ export default {
           xAxes: [{
             id: 'default',
             ticks: {
-              min: 0
+              min: 0,
+              fontFamily:"'Brygada 1918', serif",
+          fontStyle:"400",
             }
           }],
           yAxes: {

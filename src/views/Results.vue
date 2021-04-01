@@ -1,6 +1,13 @@
 <template>
 <div class="px-4">
-  <h1 class="headertext">Retirement Analysis</h1>
+  <div class="row">
+    <div class="col-sm-6 text-left">
+      <h1 class="headertext">Retirement Analysis</h1>
+    </div>
+    <div class="col-sm-6 text-right">
+      <h6 class="retiredate">Target Retirement Date: {{ new Date().getFullYear() + yearstilretire}}</h6>
+    </div>
+  </div>
   <div class="row px-4">
       <div class="col-sm-12 col-md-6 content-middle">
         <number-roller></number-roller>
@@ -14,23 +21,23 @@
       your money will last: {{ incomelongevity }} -->
       </div>
       <div class="col-sm-12 col-md-6">
-        <longevity-results></longevity-results>
+        <longevity-results class="chartcontainer"></longevity-results>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6 content-middle">
-       <p class="needs-text">Based on your spending of ${{retirementspending / retirementyears}} per year. You will need ${{retirementspending}} to last the duration of your planned retirement</p>
+       <p class="needs-text">Based on your spending of <strong>${{formatCurrency(retirementspending / retirementyears)}}</strong> per year. You will need <strong>${{formatCurrency(retirementspending)}}</strong> to last the duration of your planned retirement</p>
       </div>
       <div class="col-sm-12 col-md-6">
-        <needs-results/>
+        <needs-results class="chartcontainer"/>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6 content-middle">
-        <p class="needs-text">You are off to a decent chart with your savings of {{currentsavings}}. Ideally, the optimal retirement savings is 15% of your current income. For you 15% of ${{annualincome}} comes out to ${{annualincome * .15}} a year.</p>
+        <p class="needs-text">You are off to a decent chart with your savings of <strong>${{formatCurrency(currentsavings)}}</strong> per month. Ideally, the optimal retirement savings is 15% of your current income. For you 15% of ${{formatCurrency(annualincome)}} comes out to <strong>${{formatCurrency(annualincome * .15)}}</strong> a year.</p>
       </div>
       <div class="col-sm-12 col-md-6">
-        <added-savings-results></added-savings-results>
+        <added-savings-results class="chartcontainer"></added-savings-results>
       </div>
     </div>
 </div>
@@ -89,17 +96,32 @@ computed: {
   returnState () {
     return this.$store.getters.getState;
   }
+},
+methods: {
+    formatCurrency(value) {
+        let val = (value/1).toFixed(0).replace('.', '.')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
 }
 }
 </script>
 
 <style scoped>
+.chartcontainer{
+    border: 6px solid rgb(248, 248, 248);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 4px 8px #e8e8e86e;
+    background: white;
+}
 .content-middle{
     margin-top: auto !important;
     margin-bottom: auto !important;
 }
 .headertext{
-  border-bottom:1px solid #c9c9c9;
+    font-family: 'Brygada 1918', serif;
+    font-size: 3em;
+    font-weight: 600;
 }
 .row {
   border-bottom:1px solid #c9c9c9;
@@ -107,6 +129,14 @@ computed: {
   padding:15px 0;
 }
 .needs-text{
-  font-size:1.4em;
+  font-size: 1.8em;
+  padding: 20px;
+}
+.retiredate{
+  color:#848484;
+  font-family: 'Brygada 1918', serif;
+  font-weight: 600;
+  font-size:1.5em;
+  padding-top: 10px;
 }
 </style>

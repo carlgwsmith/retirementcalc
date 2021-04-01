@@ -34,7 +34,10 @@ export default {
         title: {
           display: true,
           text: "How Much Money Do You Need to Retire?",
-          fontSize: "16",
+          fontSize: "22",
+          fontFamily:"'Brygada 1918', serif",
+          fontStyle:"800",
+          fontColor:"#274c83",
         },
         pointLabels: {
           display: false

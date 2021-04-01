@@ -116,10 +116,10 @@ watch: {
 
 <style scoped>
 .formContainer{
-  border: 6px solid #fff;
+  border: 6px solid rgb(248, 248, 248);
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 5px 4px 8px rgb(97 97 97 / 43%);
+      box-shadow: 5px 4px 8px #e8e8e86e;
   background: white;
 }
 .vue-form-wizard .wizard-icon-circle {

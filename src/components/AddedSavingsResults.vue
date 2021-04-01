@@ -43,7 +43,10 @@ export default {
         title: {
           display: true,
           text: "The Potential of More Savings",
-          fontSize: "16",
+          fontSize: "22",
+          fontFamily:"'Brygada 1918', serif",
+          fontStyle:"800",
+          fontColor:"#274c83",
         },
         pointLabels: {
           display: false

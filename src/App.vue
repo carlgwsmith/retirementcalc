@@ -4,14 +4,14 @@
       <div class="col-6 text-left">
         <router-link to="/">
         <div class="brand">
-           <i class="fas fa-piggy-bank"></i> FakeBoy Financial
+           <i class="fas fa-piggy-bank"></i> <font-awesome-icon icon="piggy-bank" /> FakeBoy Financial
            <p class="tagline">We're not real!</p>
         </div>
         </router-link>
       </div>
-      <div class="col-6 text-right">
-        <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <div class="col-6 text-right rightpad">
+        <router-link to="/" class="links">Home</router-link> |
+      <router-link to="/about" class="links">About</router-link>
       </div>
     </div>
     <router-view class="defaults"/>
@@ -30,7 +30,7 @@ font-family: 'Work Sans', sans-serif; */
   font-family: 'Work Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #274c83;
   background: 
     /* top, transparent red, faked with gradient */ 
     linear-gradient(
@@ -42,8 +42,11 @@ font-family: 'Work Sans', sans-serif; */
   background-size:cover;
 }
 .defaults{
-  padding:40px;
+  padding:20px 40px;
   min-height: 100vh;
+}
+.rightpad{
+  padding-top: 20px;
 }
 .brand{
   margin-top:auto;
@@ -51,8 +54,8 @@ font-family: 'Work Sans', sans-serif; */
   font-family: 'Brygada 1918', serif;
   font-weight:800;
   font-size:2em;
-  color:#4d4d4d;
-  text-shadow:2px 2px 3px #4d4d4d4d;
+  color:#274c83;
+  /* text-shadow:2px 2px 3px #4d4d4d4d; */
 }
 .tagline {
   margin-top:0px;
@@ -73,13 +76,23 @@ font-family: 'Work Sans', sans-serif; */
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #274c83;
+}
+.links:hover{
+  border-bottom:3px solid #0de4b5;
+}
+#nav a:hover{
+  text-decoration: none !important;
+}
+#nav a.router-link-exact-active .brand:hover {
+  border-bottom: none !important;
+  text-decoration: none !important;
 }
 input {
     margin-bottom: 16px !important;
 }
 #nav a.router-link-exact-active {
-  color: #0de4b5;
+  border-bottom: 3px solid #0de4b5;
 }
 .wizard-icon-container {
     margin: -1px !important;

@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <link rel="stylesheet" 
+        href="node_modules/@fortawesome/fontawesome-free/css/all.css">
     <div id="nav" class="row">
       <div class="col-6 text-left">
         <router-link to="/">
-        <div class="brand">
-           <i class="fas fa-piggy-bank"></i> <font-awesome-icon icon="piggy-bank" /> FakeBoy Financial
-           <p class="tagline">We're not real!</p>
+        <div class="brand tracking-in-expand">
+           <b-icon-cash/> FakeBoy Financial
+           <p class="tagline text-focus-in">We're not real!</p>
         </div>
         </router-link>
       </div>
@@ -17,7 +19,11 @@
     <router-view class="defaults"/>
   </div>
 </template>
-
+<style scoped>
+.b-icon.bi {
+  transform: rotate(352deg);
+}
+</style>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;500;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -106,6 +112,14 @@ input {
 	-webkit-animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s both;
   animation: fade-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1s both;
 }
+.tracking-in-expand {
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+.text-focus-in {
+	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
 
 @-webkit-keyframes slide-in-left {
   0% {
@@ -144,6 +158,54 @@ input {
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
     opacity: 1;
   }
 }

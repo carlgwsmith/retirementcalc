@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1 class="slide-in-left">{{ msg }}</h1>
+    <h1 class="text-focus-in">{{ msg }}</h1>
     <p class="fade-in">We've created this quick retirement calculator to give you idea on what you can do to ensure that you have a long-lasting, worry free retirement! <strong>It's super easy, get started below!</strong></p>
   </div>
 </template>
@@ -36,8 +36,12 @@ a {
   color: #274c83;
 }
 p{
-  font-size:1.2em;
-  padding-top:10px;
+  font-size: 1.5em;
+  line-height: 1.65em;
+  padding: 20px 0 20px 40px;
+  margin-top: 30px !important;
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
 }
 
 </style>

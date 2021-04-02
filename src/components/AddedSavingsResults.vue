@@ -55,11 +55,16 @@ export default {
           xAxes: [{
             id: 'default',
             ticks: {
-              min: 0
+              min: 0,
+              fontFamily:"'Brygada 1918', serif",
+              fontStyle:"500",
             }
           }],
           yAxes: {
-            
+            ticks:{
+              fontFamily:"'Brygada 1918', serif",
+              fontStyle:"500",
+            }
           }
         }
       },

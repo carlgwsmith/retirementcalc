@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="row">
+    <div class="row pad30">
       <div class="col-sm-12">
         <Banner msg="Quick Retirement Calculator"/>
       </div>
@@ -39,6 +39,9 @@ export default {
 .forminstructions{
   font-size:16px !important;
   padding-left: 20px;
+}
+.pad30{
+  padding-top:40px !important;
 }
 /* .advert{
   height: 100%;

@@ -1,8 +1,8 @@
 <template>
-<div class="px-4">
+<div class="px-4 fade-in">
   <div class="row">
     <div class="col-sm-6 text-left">
-      <h1 class="headertext">Retirement Analysis</h1>
+      <h1 class="headertext slide-in-left">Retirement Analysis</h1>
     </div>
     <div class="col-sm-6 text-right">
       <h6 class="retiredate">Target Retirement Date: {{ new Date().getFullYear() + yearstilretire}}</h6>
@@ -119,9 +119,9 @@ methods: {
     margin-bottom: auto !important;
 }
 .headertext{
-    font-family: 'Brygada 1918', serif;
+    font-family: 'Work Sans', sans-serif;
     font-size: 3em;
-    font-weight: 600;
+    font-weight: 800;
 }
 .row {
   border-bottom:1px solid #c9c9c9;

@@ -8,11 +8,15 @@
 <script>
 // import { EventBus } from './event-bus.js';
 
+
 export default {
      props: {
             label: String,
             unique: String,
             placeholder: Number,
+    },
+    components:{
+        //VueSlider
     },
     data () {
         return {
@@ -23,7 +27,7 @@ export default {
 </script>
 <style scoped>
 .form-group{
-    margin: 5px;
+    margin: 20px !important;
 }
 label {
     margin-right: 5px;

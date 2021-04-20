@@ -34,7 +34,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 col-md-6 content-middle">
-        <p class="needs-text">You are off to a decent chart with your savings of <strong>${{formatCurrency(currentsavings)}}</strong> per month. Ideally, the optimal retirement savings is 15% of your current income. For you 15% of ${{formatCurrency(annualincome)}} comes out to <strong>${{formatCurrency(annualincome * .15)}}</strong> a year.</p>
+        <p class="needs-text">You are off to a decent chart with your savings of <strong>${{formatCurrency(retirementsavings)}}</strong> per month. Ideally, the optimal retirement savings is 15% of your current income. For you 15% of ${{formatCurrency(annualincome)}} comes out to <strong>${{formatCurrency(annualincome * .15)}}</strong> a year.</p>
       </div>
       <div class="col-sm-12 col-md-6">
         <added-savings-results class="chartcontainer"></added-savings-results>
